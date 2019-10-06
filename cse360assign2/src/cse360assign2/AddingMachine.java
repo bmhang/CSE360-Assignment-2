@@ -14,12 +14,14 @@ package cse360assign2;
 public class AddingMachine {
 
 	private int total;
+	private String history;
 	
 	/**
 	 * Instantiates a new <code>AddingMachine</code> object
 	 */
 	public AddingMachine () {
 		total = 0;  // not needed - included for clarity
+		history = "0";
 	}
 	
 	/**
@@ -28,7 +30,7 @@ public class AddingMachine {
 	 * @return	an <code>int</code> containing the total
 	 */
 	public int getTotal () {
-		return 0;
+		return total;
 	}
 	
 	/**
@@ -37,7 +39,10 @@ public class AddingMachine {
 	 * @param value	the <code>int</code> to be added
 	 */
 	public void add (int value) {
+		total += value;
 		
+		String newHistory = " + " + Integer.toString(value);
+		history += newHistory;
 	}
 	
 	/**
@@ -46,7 +51,10 @@ public class AddingMachine {
 	 * @param value the <code>int</code> to be subtracted
 	 */
 	public void subtract (int value) {
+		total -= value;
 		
+		String newHistory = " - " + Integer.toString(value);
+		history += newHistory;
 	}
 	
 	/**
@@ -54,16 +62,17 @@ public class AddingMachine {
 	 * For example, this method will return "0 + 4 - 2 + 5" after these operations are performed using
 	 * the <code>add</code> and <code>subtract</code> methods.
 	 * 
-	 * @return	a string containing all values and operations performed
+	 * @return a string containing all values and operations performed
 	 */
 	public String toString () {
-		return "";
+		return history;
 	}
 	
 	/**
 	 * Removes all previous operations and resets the total of this object to 0.
 	 */
 	public void clear() {
-	
+		total = 0;
+		history = "0";
 	}
 }
